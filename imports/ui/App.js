@@ -4,6 +4,7 @@ import { withTracker } from "meteor/react-meteor-data";
 import { Comments } from "../api/Comments";
 import propTypes from "prop-types";
 import CommentList from "./comments/CommentList";
+import AccountsUIWrapper from "./AccountsUiWrapper";
 
 class App extends Component {
   //App constructor
@@ -17,6 +18,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    //url where the NextBus Json is from.
     const urlBuses = "https://gist.githubusercontent.com/john-guerra/a0b840ba721ed771dd02d94a855cb595/raw/d68dba41f118bebc438a4f7ade9d27078efdfc09/sfBuses.json";
 
     //fetch from the NextBus api
@@ -35,6 +37,7 @@ class App extends Component {
     })();
     return (
       <div>
+        <AccountsUIWrapper />
         <h1>Distance between buses in Seatle Routes</h1>
         <hr/>
         <CommentList comments={this.props.comments} />
