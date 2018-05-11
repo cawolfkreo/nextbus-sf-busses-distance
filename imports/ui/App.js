@@ -1,7 +1,16 @@
 import React, { Component } from "react";
+
 import { Meteor } from "meteor/meteor";
 import { withTracker } from "meteor/react-meteor-data";
 import { Comments } from "../api/Comments";
+import {
+  Row,
+  Col,
+  Navbar,
+  Nav,
+  NavItem
+} from "reactstrap";
+
 import propTypes from "prop-types";
 import CommentList from "./comments/CommentList";
 import AccountsUIWrapper from "./AccountsUiWrapper";
@@ -29,22 +38,35 @@ class App extends Component {
   }
 
   render() {
-    const copyright = (() => {
-      let datos = this.state.data;
-      if (datos !== null && typeof datos !== "undefined") {
-        return datos.copyright;
-      }
-    })();
+    const copyright = (this.state.data !== null && typeof this.state.data !== "undefined") ?
+      this.state.data.copyright : "";
+
     return (
       <div>
-        <AccountsUIWrapper />
-        <h1>Distance between buses in Seatle Routes</h1>
-        <hr/>
-        <CommentList comments={this.props.comments} />
-        <hr/>
-        <div>
-          {copyright}
-        </div>
+        <Navbar color="dark">
+          <Nav navbar>
+            <NavItem>
+              <AccountsUIWrapper />
+            </NavItem>
+          </Nav>
+        </Navbar>
+        <Col sm={{ size: 8, offset: 3 }}>
+          <h1 className="abajo" >Distance between buses in Seatle Routes</h1>
+        </Col>
+        <Col sm={{ size: 9, offset: 1 }}>
+          <hr />
+        </Col>
+        <Row>
+          <CommentList comments={this.props.comments} user={this.props.user} />
+        </Row>
+        <Col sm={{ size: 9, offset: 1 }}>
+          <hr />
+        </Col>
+        <Col sm={{ size: 8, offset: 3 }}>
+          <p>
+            {copyright}
+          </p>
+        </Col>
       </div>
     );
   }
@@ -53,13 +75,22 @@ class App extends Component {
 //PropTypes for the web Application
 App.propTypes = {
   //arrays
-  comments: propTypes.array.isRequired
+  comments: propTypes.array.isRequired,
+  //Objects
+  user: propTypes.object
 };
 
 //Wrapper of react for Meteor
 export default withTracker(() => {
   Meteor.subscribe("comments");
+  let user = Meteor.user();
+  if (user !== null && typeof user !== "undefined") {
+    if (user.profile !== null && typeof user.profile !== "undefined") {
+      user.username = user.profile.name;
+    }
+  }
   return {
-    comments: Comments.find().fetch()
+    comments: Comments.find().fetch(),
+    user: user
   };
 })(App);

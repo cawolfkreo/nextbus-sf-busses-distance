@@ -5,6 +5,8 @@ import { render } from "react-dom";
 import "../imports/startup/accounts-config";
 import App from "../imports/ui/App";
 
+import "bootstrap/dist/css/bootstrap.css";
+
 Meteor.startup(() => {
   render(<App />, document.getElementById("target"));
 });

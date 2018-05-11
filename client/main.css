@@ -1,1 +1,23 @@
 /* CSS declarations go here */
+nav ul li {
+    color: rgb(255, 255, 255);
+    font-size: 1.4rem;
+}
+
+p {
+    font-size: 1.6rem;
+}
+
+.abajo {
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
+
+html body form div.input-group input.largo {
+    Margin-right: 3vmax;
+    width: 22vmax;
+}
+
+.normal {
+    font-size: 1rem;
+}
