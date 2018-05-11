@@ -7,7 +7,8 @@ import {
   Label,
   Input,
   Button,
-  FormGroup
+  FormGroup,
+  Col
 } from "reactstrap";
 
 export default class CommentForm extends Component {
@@ -41,35 +42,37 @@ export default class CommentForm extends Component {
   render() {
     const rutes = this.renderRutes();
     return (
-      <Form onSubmit={this.commentSubmission}>
-        <FormGroup>
-          <Label for="comment">
-            <p className="normal" >Add a comment about a route</p>
-          </Label>
-          <Input
-            id="comment"
-            type="text"
-            ref="comment"
-            placeholder="Type your comment here..."
-            className="largo"
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label for="rutes">
-            <p className="normal" >Select a route</p>
-          </Label>
-          <Input
-            type="select"
-            name="rutes"
-            id="rutes"
-            ref="rutes"
-          >
-            <option>Select one</option>
-            {rutes}
-          </Input>
-        </FormGroup>
-        <Button color="dark">Submit</Button>
-      </Form >
+      <Col sm={4}>
+        <Form onSubmit={this.commentSubmission}>
+          <FormGroup>
+            <Label for="comment">
+              <p className="normal" >Add a comment about a route</p>
+            </Label>
+            <Input
+              id="comment"
+              type="text"
+              ref="comment"
+              placeholder="Type your comment here..."
+              className="largo"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="rutes">
+              <p className="normal" >Select a route</p>
+            </Label>
+            <Input
+              type="select"
+              name="rutes"
+              id="rutes"
+              ref="rutes"
+            >
+              <option>Select one</option>
+              {rutes}
+            </Input>
+          </FormGroup>
+          <Button color="dark">Submit</Button>
+        </Form >
+      </Col>
     );
   }
 }

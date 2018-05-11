@@ -9,7 +9,7 @@ export default class BarGraph extends Component {
 
     this.state = {
       width: 1000,
-      height: 600,
+      height: 700,
       nested: null
     };
 
@@ -91,6 +91,10 @@ export default class BarGraph extends Component {
 
     //gets the svg element
     let svg = d3.select(this.node);
+
+    /* There was a bug where the SVG element was not emptied before manipulating it*/
+    svg.html("");
+
     const margin = { top: 20, right: 50, bottom: 30, left: 40 };
     const g = svg
       .append("g")

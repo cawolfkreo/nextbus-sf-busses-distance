@@ -33,15 +33,12 @@ input#comment {
     width: 50%;
     margin-left: 25%;
     margin-top: 5vh;
+    text-align: center;
 }
 
 .move-down {
     margin-top: 1vh;
     margin-bottom: 1vh;
-}
-
-.centered {
-    text-align: center;
 }
 
 .justified {
