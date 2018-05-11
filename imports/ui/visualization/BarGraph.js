@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import propTypes from "prop-types";
+import { Col } from "reactstrap";
 
 import * as d3 from "d3";
 
@@ -13,6 +14,7 @@ export default class BarGraph extends Component {
     };
 
     this.stackBarChart = this.stackBarChart.bind(this);
+    this.selectRute = this.selectRute.bind(this);
   }
 
   componentDidMount() {
@@ -21,6 +23,10 @@ export default class BarGraph extends Component {
 
   componentDidUpdate() {
     this.stackBarChart();
+  }
+
+  selectRute(ruteSelected) {
+    this.setState({ ruteSelected });
   }
 
   //Calculates the distance between two buses
@@ -163,8 +169,14 @@ export default class BarGraph extends Component {
     //gets the widht and height for the svg
     const height = this.state.height;
     const width = this.state.width;
+    const LongDistanceBus = "";
     return (
-      <svg className="bargraph" ref={node => (this.node = node)} height={height} width={width} />
+      <div>
+        <svg className="bargraph" ref={node => (this.node = node)} height={height} width={width} />
+        <Col>
+          {LongDistanceBus}
+        </Col>
+      </div>
     );
   }
 }

@@ -55,14 +55,15 @@ export default class CommentForm extends Component {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="comment">
+          <Label for="rutes">
             <p className="normal" >Select a route</p>
           </Label>
           <Input
             type="select"
             name="rutes"
             id="rutes"
-            ref="rutes">
+            ref="rutes"
+          >
             <option>Select one</option>
             {rutes}
           </Input>

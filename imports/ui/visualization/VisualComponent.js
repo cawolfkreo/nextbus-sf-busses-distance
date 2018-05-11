@@ -18,14 +18,10 @@ export default class VisualComponent extends Component {
   render() {
     const graph = this.props.nestedData ?
       <BarGraph nestedData={this.props.nestedData} /> : <p>Loading Data...</p>;
-    const creative = "prueba :p";
     return (
       <Row>
         <Col className="center" sm={12} >
           {graph}
-        </Col>
-        <Col sm={{ size: 7, offset: 3 }}>
-          {creative}
         </Col>
       </Row>
     );
