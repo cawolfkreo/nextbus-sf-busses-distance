@@ -40,7 +40,7 @@ export default class CommentForm extends Component {
               id="comment"
               type="text"
               ref="comment"
-              placeholder="Add your comment here..."
+              placeholder="Type your comment here..."
               className="largo"
             />
             <Button color="dark">Submit</Button>

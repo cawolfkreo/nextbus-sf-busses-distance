@@ -52,7 +52,7 @@ class App extends Component {
           </Nav>
         </Navbar>
         <Col sm={{ size: 7, offset: 2 }}>
-          <h1 className="abajo" >Distance between buses in Seatle Routes</h1>
+          <h1 className="abajo" >Distance between buses in San Francisco's Routes</h1>
         </Col>
         <Col sm={{ size: 9, offset: 1 }}>
           <hr />
