@@ -25,6 +25,6 @@ Meteor.methods({
     }
     //creates the comment to insert on Mongo.
     let commentToInsert = { comment, name };
-    Comment.insert(commentToInsert);
+    Comments.insert(commentToInsert);
   }
 });

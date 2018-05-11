@@ -15,7 +15,7 @@ p {
 
 html body form div.input-group input.largo {
     Margin-right: 3vmax;
-    width: 22vmax;
+    width: 1px !important;
 }
 
 .normal {

@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 
+import "bootstrap/dist/css/bootstrap.css";
+
 import { Meteor } from "meteor/meteor";
 import { withTracker } from "meteor/react-meteor-data";
 import { Comments } from "../api/Comments";
 import {
-  Row,
   Col,
   Navbar,
   Nav,
@@ -50,19 +51,19 @@ class App extends Component {
             </NavItem>
           </Nav>
         </Navbar>
-        <Col sm={{ size: 8, offset: 3 }}>
+        <Col sm={{ size: 7, offset: 2 }}>
           <h1 className="abajo" >Distance between buses in Seatle Routes</h1>
         </Col>
         <Col sm={{ size: 9, offset: 1 }}>
           <hr />
         </Col>
-        <Row>
+        <div>
           <CommentList comments={this.props.comments} user={this.props.user} />
-        </Row>
-        <Col sm={{ size: 9, offset: 1 }}>
+        </div>
+        <Col sm={{ size: 8, offset: 1 }}>
           <hr />
         </Col>
-        <Col sm={{ size: 8, offset: 3 }}>
+        <Col sm={{ size: 7, offset: 2 }}>
           <p>
             {copyright}
           </p>

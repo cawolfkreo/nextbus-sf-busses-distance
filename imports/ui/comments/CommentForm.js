@@ -18,12 +18,12 @@ export default class CommentForm extends Component {
     this.commentSubmission = this.commentSubmission.bind(this);
   }
 
-  commentSubmission() {
+  commentSubmission(event) {
     event.preventDefault(); //doesn't allow the webpage to reload
 
     const comment = ReactDOM.findDOMNode(this.refs.comment).value.trim(); //gets the contents on the input
     if (comment !== "") {
-      Meteor.call("comment.insert", comment, this.props.user);
+      Meteor.call("comment.insert", comment, this.props.user.username);
       ReactDOM.findDOMNode(this.refs.comment).value = "";
     }
   }

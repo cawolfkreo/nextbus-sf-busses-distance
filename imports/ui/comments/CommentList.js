@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import propTypes from "prop-types";
 import CommentForm from "./CommentForm";
-import { Col } from "reactstrap";
+import CommentElement from "./CommentElement";
+import { Col, Row } from "reactstrap";
 
 export default class CommentsList extends Component {
   constructor(props) {
     super(props);
 
     this.renderForm = this.renderForm.bind(this);
+    this.renderComments = this.renderComments.bind(this);
   }
 
   renderForm() {
@@ -15,18 +17,37 @@ export default class CommentsList extends Component {
       return (
         <CommentForm user={this.props.user} />
       );
+    } else {
+      return "You need to be logged in to make a comment.";
     }
   }
 
+  renderComments() {
+    const comments = this.props.comments.slice();
+    console.log(comments); //test
+    return comments.map(({ _id, comment, name }) => {
+      return (
+        <CommentElement comment={comment} name={name} key={_id} />
+      );
+    });
+  }
+
   render() {
-    const entrada = this.renderForm();
+    const input = this.renderForm();
+    const commentList = this.renderComments();
     return (
-      <Col sm={{ offset: 3 }}>
-        <Col sm={3}>
-          <p>Prueba :p</p>
+      <Col sm="auto" >
+        <Col sm={{ size: "auto", offset: 1 }}>
+          {input}
         </Col>
-        <Col sm={{ size: 12, offset: 3 }}>
-          {entrada}
+        <Col sm={{ size: "10", offset: 1 }}>
+          <h2>
+            Comments:
+          </h2>
+          <br />
+          <Row>
+            {commentList}
+          </Row>
         </Col>
       </Col>
     );
