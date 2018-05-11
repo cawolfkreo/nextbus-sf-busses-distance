@@ -5,7 +5,8 @@ import {
   Card,
   CardBody,
   CardTitle,
-  CardText
+  CardText,
+  CardSubtitle
 } from "reactstrap";
 
 export default class CommentElement extends Component {
@@ -19,9 +20,9 @@ export default class CommentElement extends Component {
         <Card>
           <CardBody>
             <CardTitle><strong>User:</strong> {this.props.name}</CardTitle>
-            <br/>
+            <CardSubtitle><strong>Rute tag:</strong> {this.props.rute}</CardSubtitle>
             <hr/>
-            <CardText><strong>Comment:</strong>{this.props.comment}</CardText>
+            <CardText><strong>Comment:</strong> {this.props.comment}</CardText>
           </CardBody>
         </Card>
       </Col>
@@ -33,5 +34,6 @@ export default class CommentElement extends Component {
 CommentElement.propTypes = {
   //Strings
   comment: propTypes.string.isRequired,
-  name: propTypes.string.isRequired
+  name: propTypes.string.isRequired,
+  rute: propTypes.string.isRequired
 };

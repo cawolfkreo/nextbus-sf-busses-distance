@@ -15,6 +15,8 @@ import {
 import propTypes from "prop-types";
 import CommentList from "./comments/CommentList";
 import AccountsUIWrapper from "./AccountsUiWrapper";
+import VisualComponent from "./visualization/VisualComponent";
+import * as d3 from "d3-collection";
 
 class App extends Component {
   //App constructor
@@ -25,16 +27,28 @@ class App extends Component {
     this.state = {
       data: null
     };
+
+    this.fetchData = this.fetchData.bind(this);
   }
 
+
   componentDidMount() {
+    this.fetchData();
+  }
+
+  // This fetch the data
+  fetchData() {
     //url where the NextBus Json is from.
     const urlBuses = "https://gist.githubusercontent.com/john-guerra/a0b840ba721ed771dd02d94a855cb595/raw/d68dba41f118bebc438a4f7ade9d27078efdfc09/sfBuses.json";
 
     //fetch from the NextBus api
     fetch(urlBuses)
       .then(response => response.json())
-      .then(data => this.setState({ data: data }))
+      .then(data => {
+        let nestedData = d3.nest().key(d => d.routeTag).entries(data.vehicle);
+        let rutes = nestedData.map(({ key }) => key);
+        this.setState({ data, nestedData, rutes });
+      })
       .catch(err => console.log(err));
   }
 
@@ -51,19 +65,26 @@ class App extends Component {
             </NavItem>
           </Nav>
         </Navbar>
-        <Col sm={{ size: 7, offset: 2 }}>
+        <Col className="center" sm={12}>
           <h1 className="abajo" >Distance between buses in San Francisco's Routes</h1>
         </Col>
-        <Col sm={{ size: 9, offset: 1 }}>
+        <Col className="center" sm={12}>
+          <VisualComponent nestedData={this.state.nestedData} rutes={this.state.rutes} />
+        </Col>
+        <Col className="center" sm={12}>
           <hr />
         </Col>
         <div>
-          <CommentList comments={this.props.comments} user={this.props.user} />
+          <CommentList
+            comments={this.props.comments}
+            user={this.props.user}
+            rutes={this.state.rutes}
+          />
         </div>
-        <Col sm={{ size: 8, offset: 1 }}>
+        <Col className="center" sm={12}>
           <hr />
         </Col>
-        <Col sm={{ size: 7, offset: 2 }}>
+        <Col className="center" sm={12}>
           <p>
             {copyright}
           </p>

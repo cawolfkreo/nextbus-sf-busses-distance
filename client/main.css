@@ -8,16 +8,28 @@ p {
     font-size: 1.6rem;
 }
 
+p.card-text {
+    font-size: 1rem;
+}
+
+input#comment {
+    margin-right: 5%;
+}
+
 .abajo {
     margin-top: 70px;
     margin-bottom: 50px;
 }
 
-html body form div.input-group input.largo {
-    Margin-right: 3vmax;
-    width: 1px !important;
-}
-
 .normal {
     font-size: 1rem;
+}
+
+.center {
+    width: 50%;
+    text-align: center;
+}
+
+.bargraph {
+    background-color: rgba(44, 87, 143, 0.678);
 }

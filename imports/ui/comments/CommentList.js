@@ -15,7 +15,7 @@ export default class CommentsList extends Component {
   renderForm() {
     if (this.props.user !== null && typeof this.props.user !== "undefined") {
       return (
-        <CommentForm user={this.props.user} />
+        <CommentForm user={this.props.user} rutes={this.props.rutes}/>
       );
     } else {
       return "You need to be logged in to make a comment.";
@@ -24,10 +24,9 @@ export default class CommentsList extends Component {
 
   renderComments() {
     const comments = this.props.comments.slice();
-    console.log(comments); //test
-    return comments.map(({ _id, comment, name }) => {
+    return comments.map(({ _id, comment, name, rute }) => {
       return (
-        <CommentElement comment={comment} name={name} key={_id} />
+        <CommentElement comment={comment} name={name} key={_id} rute={rute} />
       );
     });
   }
@@ -37,10 +36,10 @@ export default class CommentsList extends Component {
     const commentList = this.renderComments();
     return (
       <Col sm="auto" >
-        <Col sm={{ size: "auto", offset: 1 }}>
+        <Col sm={5}>
           {input}
         </Col>
-        <Col sm={{ size: "10", offset: 1 }}>
+        <Col sm={12}>
           <h2>
             Comments:
           </h2>
@@ -58,6 +57,7 @@ export default class CommentsList extends Component {
 CommentsList.propTypes = {
   //Arrays
   comments: propTypes.array.isRequired,
+  rutes: propTypes.array,
   //Objects
   user: propTypes.object
 };

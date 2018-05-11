@@ -14,17 +14,19 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-  "comment.insert"(comment, name) {
+  "comment.insert"(comment, name, rute) {
     //checks for the comment to be a valid one
     check(comment, String);
-    //checks for the comment to be a valis one
+    //checks for the comment to be a valid one
     check(name, String);
+    //checks for the rute to be a valid one
+    check(rute, String);
 
     if (!this.userId) {
       throw new Meteor.Error("not-authorized");
     }
     //creates the comment to insert on Mongo.
-    let commentToInsert = { comment, name };
+    let commentToInsert = { comment, name, rute };
     Comments.insert(commentToInsert);
   }
 });
