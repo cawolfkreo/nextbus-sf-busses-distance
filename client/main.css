@@ -26,8 +26,13 @@ input#comment {
 }
 
 .center {
-    width: 50%;
     text-align: center;
+}
+
+.centered {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 5vh;
 }
 
 .move-down {

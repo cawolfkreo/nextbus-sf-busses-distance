@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import propTypes from "prop-types";
 
 import BarGraph from "./BarGraph";
+import RuteSelector from "./RuteSelector";
 
 import { Row, Col } from "reactstrap";
 
@@ -10,18 +11,30 @@ export default class VisualComponent extends Component {
     super(props);
 
     this.state = {
-      ruteSelected: null,
-      bus: null
+      rutesDistances: null
     };
+    this.setrutesDistance = this.setrutesDistance.bind(this);
+  }
+
+  setrutesDistance(rutesDistances) {
+    this.setState({ rutesDistances });
   }
 
   render() {
     const graph = this.props.nestedData ?
-      <BarGraph nestedData={this.props.nestedData} /> : <p>Loading Data...</p>;
+      (<BarGraph
+        nestedData={this.props.nestedData}
+        rutes={this.props.rutes}
+        setRutes={this.setrutesDistance} />) : <p>Loading Data...</p>;
+    const ruteSelector = this.state.rutesDistances ?
+      (<RuteSelector className="abajo" rutes={this.state.rutesDistances} />) : "";
     return (
       <Row>
         <Col className="center" sm={12} >
           {graph}
+        </Col>
+        <Col sm={12} >
+          {ruteSelector}
         </Col>
       </Row>
     );
