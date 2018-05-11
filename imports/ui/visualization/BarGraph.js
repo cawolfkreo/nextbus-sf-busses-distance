@@ -97,7 +97,7 @@ export default class BarGraph extends Component {
     let y = d3.scaleLinear()
       .rangeRound([height - margin.top - margin.bottom, 0]);
 
-    let z = d3.scaleSequential(d3.interpolateBlues);
+    let z = d3.scaleSequential(d3.interpolateYlGnBu);
 
     x.domain(nested.map(function (d) { return d.key; })); //gets the name of the rutes for the domain on the x axis
     y.domain([0, d3.max(nested, function (d) { return d.total; })]).nice(); //gets the max route for the domain of the y axis

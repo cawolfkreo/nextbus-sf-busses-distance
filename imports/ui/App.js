@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import "bootstrap/dist/css/bootstrap.css";
+import "../api/Buses";
 
 import { Meteor } from "meteor/meteor";
 import { withTracker } from "meteor/react-meteor-data";
@@ -31,25 +32,22 @@ class App extends Component {
     this.fetchData = this.fetchData.bind(this);
   }
 
-
   componentDidMount() {
     this.fetchData();
+    setInterval(this.fetchData, 15000); //fetchs the data again every 15 seconds.
   }
 
   // This fetch the data
   fetchData() {
-    //url where the NextBus Json is from.
-    const urlBuses = "https://gist.githubusercontent.com/john-guerra/a0b840ba721ed771dd02d94a855cb595/raw/d68dba41f118bebc438a4f7ade9d27078efdfc09/sfBuses.json";
-
-    //fetch from the NextBus api
-    fetch(urlBuses)
-      .then(response => response.json())
-      .then(data => {
+    Meteor.call("getBusesData", (err, { content }) => {
+      if (err) console.log(err);
+      const data = JSON.parse(content);
+      if (data !== null && typeof data !== "undefined") {
         let nestedData = d3.nest().key(d => d.routeTag).entries(data.vehicle);
         let rutes = nestedData.map(({ key }) => key);
         this.setState({ data, nestedData, rutes });
-      })
-      .catch(err => console.log(err));
+      }
+    });
   }
 
   render() {

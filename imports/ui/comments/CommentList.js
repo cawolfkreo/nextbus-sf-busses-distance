@@ -36,10 +36,10 @@ export default class CommentsList extends Component {
     const commentList = this.renderComments();
     return (
       <Col sm="auto" >
-        <Col sm={5}>
+        <Col className="move-right" sm={6}>
           {input}
         </Col>
-        <Col sm={12}>
+        <Col className="center" sm={12}>
           <h2>
             Comments:
           </h2>

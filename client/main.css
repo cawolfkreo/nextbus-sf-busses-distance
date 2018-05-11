@@ -30,6 +30,19 @@ input#comment {
     text-align: center;
 }
 
+.move-down {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+.centered {
+    text-align: center;
+}
+
+.justified {
+    text-align: justify;
+}
+
 .bargraph {
     background-color: rgba(44, 87, 143, 0.678);
 }

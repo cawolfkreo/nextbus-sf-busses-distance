@@ -16,13 +16,13 @@ export default class CommentElement extends Component {
 
   render() {
     return (
-      <Col sm={4}>
+      <Col className="move-down" sm={4}>
         <Card>
           <CardBody>
             <CardTitle><strong>User:</strong> {this.props.name}</CardTitle>
             <CardSubtitle><strong>Rute tag:</strong> {this.props.rute}</CardSubtitle>
             <hr/>
-            <CardText><strong>Comment:</strong> {this.props.comment}</CardText>
+            <CardText className="justified" ><strong>Comment:</strong> {this.props.comment}</CardText>
           </CardBody>
         </Card>
       </Col>

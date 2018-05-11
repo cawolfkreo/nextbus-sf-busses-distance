@@ -31,8 +31,9 @@ export default class CommentForm extends Component {
   }
 
   renderRutes() {
-    let rutes = this.props.rutes.slice();
+    let rutes = this.props.rutes;
     if (rutes !== null && typeof rutes !== "undefined") {
+      rutes = rutes.slice();
       return rutes.map((tag, i) => <option key={i} >{tag}</option>);
     }
   }
