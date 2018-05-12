@@ -15,7 +15,7 @@ export default class CommentsList extends Component {
   renderForm() {
     if (this.props.user !== null && typeof this.props.user !== "undefined") {
       return (
-        <CommentForm user={this.props.user} rutes={this.props.rutes}/>
+        <CommentForm user={this.props.user} rutes={this.props.rutes} />
       );
     } else {
       return "You need to be logged in to make a comment.";
@@ -36,8 +36,16 @@ export default class CommentsList extends Component {
     const commentList = this.renderComments();
     return (
       <Col sm="auto" >
-        <Col className="move-right center" sm={6}>
-          {input}
+        <Col className="center" sm={12}>
+          <Row className="move-down" >
+            <Col sm={4} >
+              {""}
+            </Col>
+            {input}
+            <Col sm={4} >
+              {""}
+            </Col>
+          </Row>
         </Col>
         <Col className="center" sm={12}>
           <h2>

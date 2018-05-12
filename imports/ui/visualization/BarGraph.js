@@ -87,12 +87,14 @@ export default class BarGraph extends Component {
 
     //gets the width and height of the svg
     const height = this.state.height;
-    const width = this.state.width;
+    const width = this.state.width;//The width was not originally on the code made by duto_guerra
 
     //gets the svg element
     let svg = d3.select(this.node);
 
-    /* There was a bug where the SVG element was not emptied before manipulating it*/
+    /* There was a bug where the SVG element was not emptied before manipulating it
+    this corrects it
+    */
     svg.html("");
 
     const margin = { top: 20, right: 50, bottom: 30, left: 40 };

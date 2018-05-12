@@ -69,6 +69,11 @@ class App extends Component {
         <Col className="center" sm={12}>
           <VisualComponent nestedData={this.state.nestedData} rutes={this.state.rutes} />
         </Col>
+        <Col className="center move-down" sm={12}>
+          <p className="move-down">
+            {copyright}
+          </p>
+        </Col>
         <Col className="center" sm={12}>
           <hr />
         </Col>
@@ -79,14 +84,6 @@ class App extends Component {
             rutes={this.state.rutes}
           />
         </div>
-        <Col className="center" sm={12}>
-          <hr />
-        </Col>
-        <Col className="center" sm={12}>
-          <p>
-            {copyright}
-          </p>
-        </Col>
       </div>
     );
   }
