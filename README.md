@@ -11,7 +11,7 @@ Based on [John Guerra's](https://twitter.com/duto_guerra?) stack [visualization]
 
 The idea of the exam is to implement the visualization mentioned before on a website using the tools learned from the semester. There are some requirements like fetching the data the applications needs from [NextBus](https://gist.github.com/grantland/7cf4097dd9cdf0dfed14) every 10 seconds, adding the option to make comments and allow user to login and create accounts, and also [deploy on heroku](https://buses-distance.herokuapp.com/).
 
-There are some changes from the original code of the visualization made by John. One of wich is a small fix to make the visualization more [useful and organized](https://github.com/cawolfkreo/sanfrancisco-distance-buses/commit/b952c3bd616707d3aecbc055b75a3a26830d0b94#diff-aafc747ecfc5982788bdfab3222c02fb). One can say that small change could be the fix to a potential bug in the original D3 code :100: .
+There are some changes from the original code of the visualization made by John. One of wich is a small fix to make the visualization more [useful and organized](https://github.com/cawolfkreo/sanfrancisco-distance-buses/commit/b952c3bd616707d3aecbc055b75a3a26830d0b94#diff-aafc747ecfc5982788bdfab3222c02fb). One can say that such a small change could be the fix to a potential bug in the original D3 code from John Guerra :100: .
 
 ## Getting Started
 If you want to see this project in action you can do so by going [here.](https://buses-distance.herokuapp.com/) But, if you want to deploy and test it yourself you will need to install [Meteor.js](https://www.meteor.com/) first. There are different ways to do it and they are all explained on [Meteor.js website.](https://www.meteor.com/install)
