@@ -72,6 +72,11 @@ export default class BarGraph extends Component {
         rute.values[i].distance = distance;
         rute.total += distance;
       }
+      /* There was also a problem with how the data was being displayed
+         Once the distance is being calculated the vehicles need to be sorted
+         for better understanding of the visualization of this data in the main
+         graph. */
+      rute.values = rute.values.sort((bus1, bus2) => bus1.distance - bus2.distance);
       return rute;
     });
 
