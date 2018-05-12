@@ -9,7 +9,7 @@ export default class BarGraph extends Component {
 
     this.state = {
       width: 1000,
-      height: 700,
+      height: 720,
       nested: null
     };
 
